@@ -1,0 +1,307 @@
+@model TransVias.ViewModels.PainelMotoristaViewModel
+@using TransVias.Models.Enums
+
+@{
+    ViewData["Title"] = "Meu painel";
+    Layout = "_MotoristaLayout";
+}
+
+<section class="driver-panel-page">
+
+    <div class="container">
+
+        <div class="driver-panel-heading">
+
+            <div>
+                <span class="driver-panel-eyebrow">
+                    Área do motorista
+                </span>
+
+                <h1>
+                    Olá, @Model.Motorista.NomeCompleto!
+                </h1>
+
+                <p>
+                    Acompanhe abaixo a situação do seu cadastro
+                    como motorista parceiro.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- STATUS -->
+        @if (Model.Motorista.Status == StatusCadastro.Pendente)
+{
+    <div class="driver-status-card pending">
+
+        <div class="driver-status-icon">
+            !
+        </div>
+
+        <div class="driver-status-content">
+
+            <span class="driver-status-label">
+                Status atual
+            </span>
+
+            <h2>Pendente de análise</h2>
+
+            <p>
+                Seu cadastro foi recebido e está sendo analisado
+                pela nossa equipe.
+            </p>
+
+        </div>
+
+    </div>
+}
+else if (Model.Motorista.Status == StatusCadastro.CorrecaoSolicitada)
+{
+    <div class="driver-status-card correction">
+
+        <div class="driver-status-icon">
+            !
+        </div>
+
+        <div class="driver-status-content">
+
+            <span class="driver-status-label">
+                Status atual
+            </span>
+
+            <h2>Correção solicitada</h2>
+
+            <p>
+                A equipe analisou seu cadastro e identificou
+                informações que precisam ser corrigidas.
+            </p>
+
+            @if (!string.IsNullOrWhiteSpace(
+                Model.Motorista.ObservacaoAnalise))
+            {
+                <div class="driver-status-observation">
+
+                    <span>Observação da análise</span>
+
+                    <strong>
+                        @Model.Motorista.ObservacaoAnalise
+                    </strong>
+
+                </div>
+            }
+
+            
+                <form asp-controller="Motorista" asp-action="IniciarCorrecao" method="post" class="mt-3">
+
+                        <button type="submit" class="btn btn-primary">
+                            Corrigir cadastro
+                        </button>
+
+                </form>
+
+        </div>
+
+    </div>
+}
+else if (Model.Motorista.Status == StatusCadastro.Aprovado)
+{
+    <div class="driver-status-card approved">
+
+        <div class="driver-status-icon">
+            ✓
+        </div>
+
+        <div class="driver-status-content">
+
+            <span class="driver-status-label">
+                Status atual
+            </span>
+
+            <h2>Cadastro aprovado</h2>
+
+            <p>
+                Seu cadastro foi analisado e aprovado pela nossa equipe.
+            </p>
+
+        </div>
+
+    </div>
+}
+else if (Model.Motorista.Status == StatusCadastro.Recusado)
+{
+    <div class="driver-status-card rejected">
+
+        <div class="driver-status-icon">
+            ×
+        </div>
+
+        <div class="driver-status-content">
+
+            <span class="driver-status-label">
+                Status atual
+            </span>
+
+            <h2>Cadastro recusado</h2>
+
+            <p>
+                Seu cadastro foi analisado e não foi aprovado.
+            </p>
+
+            @if (!string.IsNullOrWhiteSpace(
+                Model.Motorista.ObservacaoAnalise))
+            {
+                <div class="driver-status-observation">
+
+                    <span>Observação da análise</span>
+
+                    <strong>
+                        @Model.Motorista.ObservacaoAnalise
+                    </strong>
+
+                </div>
+            }
+
+
+        </div>
+
+    </div>
+}
+
+
+        <div class="row g-4 mt-1">
+
+            <!-- RESUMO DO MOTORISTA -->
+            <div class="col-lg-7">
+
+                <div class="driver-info-card">
+
+                    <div class="driver-info-header">
+                        <div>
+                            <span>Cadastro</span>
+                            <h3>Meus dados</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="driver-info-grid">
+
+                        <div class="driver-info-item">
+                            <span>Nome</span>
+                            <strong>
+                                @Model.Motorista.NomeCompleto
+                            </strong>
+                        </div>
+
+                        <div class="driver-info-item">
+                            <span>CPF</span>
+                            <strong>
+                                @Model.Motorista.Cpf
+                            </strong>
+                        </div>
+
+                        <div class="driver-info-item">
+                            <span>CNH</span>
+                            <strong>
+                                @Model.Motorista.NumeroCnh
+                            </strong>
+                        </div>
+
+                        <div class="driver-info-item">
+                            <span>Categoria</span>
+                            <strong>
+                                @Model.Motorista.CategoriaCnh
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- VEÍCULO -->
+            <div class="col-lg-5">
+
+                <div class="driver-info-card">
+
+                    <div class="driver-info-header">
+                        <div>
+                            <span>Veículo</span>
+                            <h3>Veículo cadastrado</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="driver-vehicle-main">
+
+                        <strong>
+                            @Model.Motorista.Veiculo.Marca
+                            @Model.Motorista.Veiculo.Modelo
+                        </strong>
+
+                        <span>
+                            @Model.Motorista.Veiculo.TipoVeiculo
+                        </span>
+
+                    </div>
+
+
+                    <div class="driver-info-grid compact">
+
+                        <div class="driver-info-item">
+                            <span>Placa</span>
+                            <strong>
+                                @Model.Motorista.Veiculo.Placa
+                            </strong>
+                        </div>
+
+                        <div class="driver-info-item">
+                            <span>Ano</span>
+                            <strong>
+                                @Model.Motorista.Veiculo.Ano
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMAÇÕES DA SOLICITAÇÃO -->
+        <div class="driver-request-card">
+
+            <div class="driver-request-item">
+
+                <span>Cadastro enviado em</span>
+
+                <strong>
+                    @Model.Motorista.DataEnvio.ToString("dd/MM/yyyy 'às' HH:mm")
+                </strong>
+
+            </div>
+
+
+            <div class="driver-request-divider"></div>
+
+
+            <div class="driver-request-item">
+
+                <span>Última atualização</span>
+
+                <strong>
+                    @Model.Motorista.DataAtualizacao.ToString("dd/MM/yyyy 'às' HH:mm")
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

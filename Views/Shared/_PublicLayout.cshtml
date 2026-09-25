@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - TransVias</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header class="public-header">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="brand text-decoration-none">
+
+                <div class="brand-icon">
+                    TV
+                </div>
+
+                <span>TransVias</span>
+            </a>
+
+            <nav class="d-flex align-items-center gap-3">
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="nav-link-custom">
+                    Início
+                </a>
+
+                <a asp-controller="Account"
+                   asp-action="Login"
+                   class="btn btn-outline-primary px-4">
+                    Entrar
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="public-footer">
+        <div class="container">
+            <span>© @DateTime.Now.Year TransVias</span>
+        </div>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

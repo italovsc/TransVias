@@ -1,0 +1,335 @@
+@model TransVias.ViewModels.CadastroMotoristaViewModel
+
+@{
+    ViewData["Title"] = "Dados pessoais";
+    Layout = "_MotoristaLayout";
+}
+
+<section class="registration-page">
+
+    <div class="container">
+
+        <div class="registration-card">
+
+            <div class="registration-heading">
+                <span class="registration-line"></span>
+
+                <h1>Cadastro de motorista</h1>
+
+                <p>Etapa 1 de 4 — Dados pessoais</p>
+            </div>
+
+
+            <!-- PROGRESSO -->
+            <div class="registration-progress">
+
+                <div class="progress-step active">
+                    <div class="step-circle">1</div>
+                    <span>Dados pessoais</span>
+                </div>
+
+                <div class="progress-line"></div>
+
+                <div class="progress-step">
+                    <div class="step-circle">2</div>
+                    <span>Endereço</span>
+                </div>
+
+                <div class="progress-line"></div>
+
+                <div class="progress-step">
+                    <div class="step-circle">3</div>
+                    <span>Veículo</span>
+                </div>
+
+                <div class="progress-line"></div>
+
+                <div class="progress-step">
+                    <div class="step-circle">4</div>
+                    <span>Revisão</span>
+                </div>
+
+            </div>
+
+
+            <!-- FORMULÁRIO -->
+            <form asp-controller="Motorista"
+                  asp-action="DadosPessoais"
+                  method="post"
+                  class="registration-form">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger">
+                </div>
+
+
+                <!-- Nome -->
+                <div class="mb-4">
+
+                    <label asp-for="NomeCompleto"
+                           class="form-label registration-label">
+                        Nome completo <span>*</span>
+                    </label>
+
+                    <input asp-for="NomeCompleto"
+                           class="form-control registration-input"
+                           placeholder="Digite seu nome completo" />
+
+                    <span asp-validation-for="NomeCompleto"
+                          class="text-danger validation-message">
+                    </span>
+
+                </div>
+
+
+                <div class="row">
+
+                    <!-- CPF -->
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="Cpf"
+                               class="form-label registration-label">
+                            CPF <span>*</span>
+                        </label>
+
+                        <input asp-for="Cpf"
+                               class="form-control registration-input"
+                               placeholder="000.000.000-00" />
+
+                        <span asp-validation-for="Cpf"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <!-- Data nascimento -->
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="DataNascimento"
+                               class="form-label registration-label">
+                            Data de nascimento <span>*</span>
+                        </label>
+
+                        <input asp-for="DataNascimento"
+                               type="date"
+                               class="form-control registration-input" />
+
+                        <span asp-validation-for="DataNascimento"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <!-- Telefone principal -->
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="TelefonePrincipal"
+                               class="form-label registration-label">
+                            Telefone principal <span>*</span>
+                        </label>
+
+                        <input asp-for="TelefonePrincipal"
+                               class="form-control registration-input"
+                               placeholder="(00) 00000-0000" />
+
+                        <span asp-validation-for="TelefonePrincipal"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <!-- Telefone secundário -->
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="TelefoneSecundario"
+                               class="form-label registration-label">
+                            Telefone secundário <span>*</span>
+                        </label>
+
+                        <input asp-for="TelefoneSecundario"
+                               class="form-control registration-input"
+                               placeholder="(00) 00000-0000" />
+
+                        <span asp-validation-for="TelefoneSecundario"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <!-- CNH -->
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="NumeroCnh"
+                               class="form-label registration-label">
+                            Número da CNH <span>*</span>
+                        </label>
+
+                        <input asp-for="NumeroCnh"
+                               class="form-control registration-input"
+                               placeholder="Digite o número da sua CNH" />
+
+                        <span asp-validation-for="NumeroCnh"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <!-- Categoria CNH -->
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="CategoriaCnh"
+                               class="form-label registration-label">
+                            Categoria da CNH <span>*</span>
+                        </label>
+
+                        <select asp-for="CategoriaCnh"
+                                class="form-select registration-input">
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+
+                        </select>
+
+                        <span asp-validation-for="CategoriaCnh"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Certificação -->
+                <div class="mb-4">
+
+                    <label class="form-label registration-label">
+                        Possui certificação especial?
+                        <span>*</span>
+                    </label>
+
+                    <div class="d-flex gap-4">
+
+                        <div class="form-check">
+
+                            <input asp-for="PossuiCertificacaoEspecial"
+                                   class="form-check-input"
+                                   type="radio"
+                                   value="true"
+                                   id="certificacaoSim" />
+
+                            <label class="form-check-label"
+                                   for="certificacaoSim">
+                                Sim
+                            </label>
+
+                        </div>
+
+                        <div class="form-check">
+
+                            <input asp-for="PossuiCertificacaoEspecial"
+                                   class="form-check-input"
+                                   type="radio"
+                                   value="false"
+                                   id="certificacaoNao" />
+
+                            <label class="form-check-label"
+                                   for="certificacaoNao">
+                                Não
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <span asp-validation-for="PossuiCertificacaoEspecial"
+                          class="text-danger validation-message">
+                    </span>
+
+                </div>
+
+
+                <!-- Tipo certificação -->
+                <div class="mb-4"
+                     id="certificacaoContainer">
+
+                    <label asp-for="TipoCertificacao"
+                           class="form-label registration-label">
+                        Tipo / nome da certificação
+                    </label>
+
+                    <input asp-for="TipoCertificacao"
+                           class="form-control registration-input"
+                           placeholder="Ex.: MOPP, Transporte Escolar..." />
+
+                </div>
+
+
+                <div class="registration-footer">
+
+                    <span class="required-info">
+                        * Campos obrigatórios
+                    </span>
+
+                    <button type="submit"
+                            class="btn btn-primary registration-next-button">
+                        Continuar →
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        const sim = document.getElementById("certificacaoSim");
+        const nao = document.getElementById("certificacaoNao");
+        const container =
+            document.getElementById("certificacaoContainer");
+
+        function atualizarCertificacao() {
+
+            if (nao.checked) {
+                container.style.display = "none";
+            } else {
+                container.style.display = "block";
+            }
+
+        }
+
+        sim.addEventListener("change", atualizarCertificacao);
+        nao.addEventListener("change", atualizarCertificacao);
+
+        atualizarCertificacao();
+    </script>
+
+}

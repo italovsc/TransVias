@@ -1,0 +1,175 @@
+﻿@{
+    ViewData["Title"] = "Início";
+    Layout = "_PublicLayout";
+}
+
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+            
+            <div class="col-lg-6 hero-content">
+                <span class="hero-badge">
+                    Motoristas parceiros
+                </span>
+
+                <h1>
+                    Faça parte da nossa rede de
+                    <span>motoristas parceiros</span>
+                </h1>
+
+                <p class="hero-description">
+                    Cadastre-se para trabalhar como motorista parceiro
+                    da TransVias e acompanhe todo o processo de análise
+                    da sua solicitação.
+                </p>
+
+                <div class="d-flex flex-wrap gap-3">
+                    <a asp-controller="Account"
+                       asp-action="Register"
+                       class="btn btn-primary btn-lg hero-primary-button">
+
+                        Quero ser parceiro
+                    </a>
+
+                    <a asp-controller="Account"
+                       asp-action="Login"
+                       class="btn btn-outline-primary btn-lg hero-secondary-button">
+
+                        Já tenho uma conta
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mt-5 mt-lg-0">
+                <div class="hero-image-container">
+                    <div class="hero-image-overlay">
+                        <span>Conectando motoristas e oportunidades.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="benefits-section">
+    <div class="container">
+
+        <div class="section-heading text-center">
+            <span>Por que ser parceiro?</span>
+
+            <h2>
+                Uma parceria simples e transparente
+            </h2>
+
+            <p>
+                Faça seu cadastro e acompanhe cada etapa do processo.
+            </p>
+        </div>
+
+        <div class="row g-4 mt-3">
+
+            <div class="col-md-6 col-lg-3">
+                <div class="benefit-card">
+                    <div class="benefit-icon">01</div>
+
+                    <h3>Cadastro simples</h3>
+
+                    <p>
+                        Informe seus dados e os dados do seu veículo
+                        em poucos passos.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="benefit-card">
+                    <div class="benefit-icon">02</div>
+
+                    <h3>Análise transparente</h3>
+
+                    <p>
+                        Acompanhe o status do seu cadastro diretamente
+                        pela plataforma.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="benefit-card">
+                    <div class="benefit-icon">03</div>
+
+                    <h3>Correções facilitadas</h3>
+
+                    <p>
+                        Caso seja necessário, você será informado sobre
+                        o que precisa corrigir.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="benefit-card">
+                    <div class="benefit-icon">04</div>
+
+                    <h3>Acompanhamento online</h3>
+
+                    <p>
+                        Consulte sua solicitação sempre que quiser através
+                        da sua conta.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="steps-section">
+    <div class="container">
+
+        <div class="section-heading text-center">
+            <span>Como funciona</span>
+
+            <h2>
+                Começar é simples
+            </h2>
+        </div>
+
+        <div class="row g-4 mt-4">
+
+            <div class="col-md-3">
+                <div class="step-item">
+                    <span>1</span>
+                    <h3>Crie sua conta</h3>
+                    <p>Informe seu e-mail e crie sua senha.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="step-item">
+                    <span>2</span>
+                    <h3>Preencha o cadastro</h3>
+                    <p>Informe seus dados pessoais, endereço e veículo.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="step-item">
+                    <span>3</span>
+                    <h3>Envie para análise</h3>
+                    <p>Revise suas informações e envie o cadastro.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="step-item">
+                    <span>4</span>
+                    <h3>Acompanhe</h3>
+                    <p>Veja o status da solicitação pelo seu painel.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,246 @@
+@model TransVias.ViewModels.DashboardAdminViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<section class="admin-page">
+
+    <div class="container">
+
+        <div class="admin-page-heading">
+
+            <div>
+                <span class="admin-eyebrow">
+                    Administração
+                </span>
+
+                <h1>Dashboard</h1>
+
+                <p>
+                    Acompanhe e analise os cadastros dos motoristas parceiros.
+                </p>
+            </div>
+
+        </div>
+
+
+        @if (TempData["Sucesso"] is not null)
+        {
+            <div class="alert alert-success mb-4">
+                @TempData["Sucesso"]
+            </div>
+        }
+
+        @if (TempData["Erro"] is not null)
+        {
+            <div class="alert alert-danger mb-4">
+                @TempData["Erro"]
+            </div>
+        }
+
+
+        <!-- RESUMO -->
+        <div class="row g-4 admin-summary">
+
+            <div class="col-md-4">
+
+                <div class="admin-summary-card pending">
+
+                    <div class="admin-summary-info">
+                        <span>Pendentes</span>
+
+                        <strong>
+                            @Model.Pendentes
+                        </strong>
+                    </div>
+
+                    <div class="admin-summary-icon">
+                        !
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="admin-summary-card approved">
+
+                    <div class="admin-summary-info">
+                        <span>Aprovados</span>
+
+                        <strong>
+                            @Model.Aprovados
+                        </strong>
+                    </div>
+
+                    <div class="admin-summary-icon">
+                        ✓
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="admin-summary-card rejected">
+
+                    <div class="admin-summary-info">
+                        <span>Recusados</span>
+
+                        <strong>
+                            @Model.Recusados
+                        </strong>
+                    </div>
+
+                    <div class="admin-summary-icon">
+                        ×
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LISTA DE MOTORISTAS -->
+        <div class="admin-table-card">
+
+            <div class="admin-table-header">
+
+                <div>
+                    <span class="admin-table-eyebrow">
+                        Cadastros
+                    </span>
+
+                    <h2>Motoristas</h2>
+                </div>
+
+                <span class="admin-driver-count">
+                    @Model.Motoristas.Count cadastro(s)
+                </span>
+
+            </div>
+
+
+            @if (Model.Motoristas.Count == 0)
+            {
+                <div class="admin-empty-state">
+
+                    <strong>Nenhum cadastro encontrado.</strong>
+
+                    <p>
+                        Os motoristas enviados para análise aparecerão aqui.
+                    </p>
+
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+
+                    <table class="table admin-table align-middle">
+
+                        <thead>
+                            <tr>
+                                <th>Motorista</th>
+                                <th>Veículo</th>
+                                <th>Placa</th>
+                                <th>Envio</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var motorista in Model.Motoristas)
+                            {
+                                <tr>
+
+                                    <td>
+                                        <div class="admin-driver-name">
+                                            @motorista.NomeCompleto
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        @motorista.Marca
+                                        @motorista.Modelo
+                                    </td>
+
+                                    <td>
+                                        <span class="admin-plate">
+                                            @motorista.Placa
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        @motorista.DataEnvio.ToString("dd/MM/yyyy")
+                                    </td>
+
+                                    <td>
+
+                                        @switch (motorista.Status)
+                                        {
+                                            case TransVias.Models.Enums.StatusCadastro.Pendente:
+                                                <span class="status-badge status-pending">
+                                                    Pendente
+                                                </span>
+                                                break;
+
+                                            case TransVias.Models.Enums.StatusCadastro.Aprovado:
+                                                <span class="status-badge status-approved">
+                                                    Aprovado
+                                                </span>
+                                                break;
+
+                                            case TransVias.Models.Enums.StatusCadastro.Recusado:
+                                                <span class="status-badge status-rejected">
+                                                    Recusado
+                                                </span>
+                                                break;
+
+                                            case TransVias.Models.Enums.StatusCadastro.CorrecaoSolicitada:
+                                                <span class="status-badge status-correction">
+                                                    Correção solicitada
+                                                </span>
+                                                break;
+                                        }
+
+                                    </td>
+
+                                    <td class="text-end">
+
+                                        <a asp-controller="Admin"
+                                           asp-action="Detalhes"
+                                           asp-route-id="@motorista.Id"
+                                           class="btn admin-details-button">
+
+                                            Ver detalhes
+
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</section>

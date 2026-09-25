@@ -1,0 +1,389 @@
+@model TransVias.ViewModels.RevisaoCadastroViewModel
+
+@{
+    ViewData["Title"] = "Revisão";
+    Layout = "_MotoristaLayout";
+}
+
+<section class="registration-page">
+
+    <div class="container">
+
+        <div class="registration-card">
+
+            <div class="registration-heading">
+                <span class="registration-line"></span>
+
+                <h1>Revise seu cadastro</h1>
+
+                <p>
+                    Etapa 4 de 4 — Confira suas informações antes de enviar.
+                </p>
+            </div>
+
+
+            <!-- PROGRESSO -->
+            <div class="registration-progress">
+
+                <div class="progress-step completed">
+                    <div class="step-circle">✓</div>
+                    <span>Dados pessoais</span>
+                </div>
+
+                <div class="progress-line completed-line"></div>
+
+                <div class="progress-step completed">
+                    <div class="step-circle">✓</div>
+                    <span>Endereço</span>
+                </div>
+
+                <div class="progress-line completed-line"></div>
+
+                <div class="progress-step completed">
+                    <div class="step-circle">✓</div>
+                    <span>Veículo</span>
+                </div>
+
+                <div class="progress-line completed-line"></div>
+
+                <div class="progress-step active">
+                    <div class="step-circle">4</div>
+                    <span>Revisão</span>
+                </div>
+
+            </div>
+
+
+            @if (TempData["Erro"] is not null)
+            {
+                <div class="alert alert-danger mb-4">
+                    @TempData["Erro"]
+                </div>
+            }
+
+
+            <!-- DADOS PESSOAIS -->
+            <div class="review-card">
+
+                <div class="review-card-header">
+
+                    <div>
+                        <span class="review-card-eyebrow">
+                            Motorista
+                        </span>
+
+                        <h2>Dados pessoais</h2>
+                    </div>
+
+                    <a asp-controller="Motorista"
+                       asp-action="DadosPessoais"
+                       class="review-edit-link">
+
+                        Editar
+                    </a>
+
+                </div>
+
+
+                <div class="review-grid">
+
+                    <div class="review-item review-item-wide">
+                        <span>Nome completo</span>
+                        <strong>
+                            @Model.DadosPessoais.NomeCompleto
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>CPF</span>
+                        <strong>
+                            @Model.DadosPessoais.Cpf
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Data de nascimento</span>
+                        <strong>
+                            @Model.DadosPessoais.DataNascimento?.ToString("dd/MM/yyyy")
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Telefone principal</span>
+                        <strong>
+                            @Model.DadosPessoais.TelefonePrincipal
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Telefone secundário</span>
+                        <strong>
+                            @Model.DadosPessoais.TelefoneSecundario
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Número da CNH</span>
+                        <strong>
+                            @Model.DadosPessoais.NumeroCnh
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Categoria da CNH</span>
+                        <strong>
+                            @Model.DadosPessoais.CategoriaCnh
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Certificação especial</span>
+
+                        <strong>
+                            @(Model.DadosPessoais.PossuiCertificacaoEspecial == true
+                                ? "Sim"
+                                : "Não")
+                        </strong>
+                    </div>
+
+                    @if (Model.DadosPessoais.PossuiCertificacaoEspecial == true)
+                    {
+                        <div class="review-item">
+                            <span>Tipo da certificação</span>
+
+                            <strong>
+                                @Model.DadosPessoais.TipoCertificacao
+                            </strong>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- ENDEREÇO -->
+            <div class="review-card">
+
+                <div class="review-card-header">
+
+                    <div>
+                        <span class="review-card-eyebrow">
+                            Localização
+                        </span>
+
+                        <h2>Endereço</h2>
+                    </div>
+
+                    <a asp-controller="Motorista"
+                       asp-action="Endereco"
+                       class="review-edit-link">
+
+                        Editar
+                    </a>
+
+                </div>
+
+
+                <div class="review-grid">
+
+                    <div class="review-item">
+                        <span>CEP</span>
+
+                        <strong>
+                            @Model.Endereco.Cep
+                        </strong>
+                    </div>
+
+                    <div class="review-item review-item-wide">
+                        <span>Rua / Avenida</span>
+
+                        <strong>
+                            @Model.Endereco.RuaAvenida
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Número</span>
+
+                        <strong>
+                            @Model.Endereco.Numero
+                        </strong>
+                    </div>
+
+                    @if (!string.IsNullOrWhiteSpace(Model.Endereco.Complemento))
+                    {
+                        <div class="review-item">
+                            <span>Complemento</span>
+
+                            <strong>
+                                @Model.Endereco.Complemento
+                            </strong>
+                        </div>
+                    }
+
+                    <div class="review-item">
+                        <span>Bairro</span>
+
+                        <strong>
+                            @Model.Endereco.Bairro
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Cidade</span>
+
+                        <strong>
+                            @Model.Endereco.Cidade
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Estado</span>
+
+                        <strong>
+                            @Model.Endereco.Estado
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- VEÍCULO -->
+            <div class="review-card">
+
+                <div class="review-card-header">
+
+                    <div>
+                        <span class="review-card-eyebrow">
+                            Transporte
+                        </span>
+
+                        <h2>Veículo</h2>
+                    </div>
+
+                    <a asp-controller="Motorista"
+                       asp-action="Veiculo"
+                       class="review-edit-link">
+
+                        Editar
+                    </a>
+
+                </div>
+
+
+                <div class="review-grid">
+
+                    <div class="review-item">
+                        <span>Placa</span>
+
+                        <strong>
+                            @Model.Veiculo.Placa
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Ano</span>
+
+                        <strong>
+                            @Model.Veiculo.Ano
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Marca</span>
+
+                        <strong>
+                            @Model.Veiculo.Marca
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Modelo</span>
+
+                        <strong>
+                            @Model.Veiculo.Modelo
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Tipo de veículo</span>
+
+                        <strong>
+                            @Model.Veiculo.TipoVeiculo
+                        </strong>
+                    </div>
+
+                    <div class="review-item">
+                        <span>Possui rastreador</span>
+
+                        <strong>
+                            @(Model.Veiculo.PossuiRastreador == true
+                                ? "Sim"
+                                : "Não")
+                        </strong>
+                    </div>
+
+                    @if (Model.Veiculo.PossuiRastreador == true)
+                    {
+                        <div class="review-item">
+                            <span>Tipo de rastreador</span>
+
+                            <strong>
+                                @Model.Veiculo.TipoRastreador
+                            </strong>
+                        </div>
+
+                        <div class="review-item">
+                            <span>Empresa / fabricante</span>
+
+                            <strong>
+                                @Model.Veiculo.EmpresaRastreador
+                            </strong>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- ENVIO -->
+            <div class="review-submit-area">
+
+                <div class="review-submit-info">
+
+                    <strong>
+                        Tudo certo?
+                    </strong>
+
+                    <span>
+                        Após o envio, seu cadastro ficará pendente
+                        para análise da empresa.
+                    </span>
+
+                </div>
+
+
+                <form asp-controller="Motorista"
+                      asp-action="EnviarCadastro"
+                      method="post">
+
+                    <button type="submit"
+                            class="btn btn-primary review-submit-button">
+
+                        Enviar cadastro
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

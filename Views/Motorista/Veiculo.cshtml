@@ -1,0 +1,341 @@
+@model TransVias.ViewModels.VeiculoViewModel
+
+@{
+    ViewData["Title"] = "Veículo";
+    Layout = "_MotoristaLayout";
+}
+
+<section class="registration-page">
+
+    <div class="container">
+
+        <div class="registration-card">
+
+            <div class="registration-heading">
+                <span class="registration-line"></span>
+
+                <h1>Cadastro de motorista</h1>
+
+                <p>Etapa 3 de 4 — Veículo</p>
+            </div>
+
+
+            <!-- PROGRESSO -->
+            <div class="registration-progress">
+
+                <div class="progress-step completed">
+                    <div class="step-circle">✓</div>
+                    <span>Dados pessoais</span>
+                </div>
+
+                <div class="progress-line completed-line"></div>
+
+                <div class="progress-step completed">
+                    <div class="step-circle">✓</div>
+                    <span>Endereço</span>
+                </div>
+
+                <div class="progress-line completed-line"></div>
+
+                <div class="progress-step active">
+                    <div class="step-circle">3</div>
+                    <span>Veículo</span>
+                </div>
+
+                <div class="progress-line"></div>
+
+                <div class="progress-step">
+                    <div class="step-circle">4</div>
+                    <span>Revisão</span>
+                </div>
+
+            </div>
+
+
+            <!-- FORMULÁRIO -->
+            <form asp-controller="Motorista"
+                  asp-action="Veiculo"
+                  method="post"
+                  class="registration-form">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger">
+                </div>
+
+
+                <div class="row">
+
+                    <!-- Placa -->
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="Placa"
+                               class="form-label registration-label">
+                            Placa <span>*</span>
+                        </label>
+
+                        <input asp-for="Placa"
+                               class="form-control registration-input"
+                               placeholder="ABC1D23" />
+
+                        <span asp-validation-for="Placa"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <!-- Ano -->
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="Ano"
+                               class="form-label registration-label">
+                            Ano <span>*</span>
+                        </label>
+
+                        <input asp-for="Ano"
+                               type="number"
+                               class="form-control registration-input"
+                               placeholder="2024" />
+
+                        <span asp-validation-for="Ano"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <!-- Marca -->
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="Marca"
+                               class="form-label registration-label">
+                            Marca <span>*</span>
+                        </label>
+
+                        <input asp-for="Marca"
+                               class="form-control registration-input"
+                               placeholder="Ex.: Mercedes-Benz" />
+
+                        <span asp-validation-for="Marca"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <!-- Modelo -->
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="Modelo"
+                               class="form-label registration-label">
+                            Modelo <span>*</span>
+                        </label>
+
+                        <input asp-for="Modelo"
+                               class="form-control registration-input"
+                               placeholder="Ex.: Sprinter" />
+
+                        <span asp-validation-for="Modelo"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Tipo de veículo -->
+                <div class="mb-4">
+
+                    <label asp-for="TipoVeiculo"
+                           class="form-label registration-label">
+                        Tipo de veículo <span>*</span>
+                    </label>
+
+                    <select asp-for="TipoVeiculo"
+                            class="form-select registration-input">
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="Carro">Carro</option>
+                        <option value="Van">Van</option>
+                        <option value="Utilitario">Utilitário</option>
+                        <option value="Caminhao">Caminhão</option>
+
+                    </select>
+
+                    <span asp-validation-for="TipoVeiculo"
+                          class="text-danger validation-message">
+                    </span>
+
+                </div>
+
+
+                <!-- Rastreador -->
+                <div class="mb-4">
+
+                    <label class="form-label registration-label">
+                        O veículo possui rastreador?
+                        <span>*</span>
+                    </label>
+
+                    <div class="d-flex gap-4">
+
+                        <div class="form-check">
+
+                            <input asp-for="PossuiRastreador"
+                                   class="form-check-input"
+                                   type="radio"
+                                   value="true"
+                                   id="rastreadorSim" />
+
+                            <label class="form-check-label"
+                                   for="rastreadorSim">
+                                Sim
+                            </label>
+
+                        </div>
+
+                        <div class="form-check">
+
+                            <input asp-for="PossuiRastreador"
+                                   class="form-check-input"
+                                   type="radio"
+                                   value="false"
+                                   id="rastreadorNao" />
+
+                            <label class="form-check-label"
+                                   for="rastreadorNao">
+                                Não
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <span asp-validation-for="PossuiRastreador"
+                          class="text-danger validation-message">
+                    </span>
+
+                </div>
+
+
+                <!-- Dados do rastreador -->
+                <div id="rastreadorContainer">
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-4">
+
+                            <label asp-for="TipoRastreador"
+                                   class="form-label registration-label">
+                                Tipo de rastreador
+                            </label>
+
+                            <input asp-for="TipoRastreador"
+                                   class="form-control registration-input"
+                                   placeholder="Ex.: GPS" />
+
+                        </div>
+
+
+                        <div class="col-md-6 mb-4">
+
+                            <label asp-for="EmpresaRastreador"
+                                   class="form-label registration-label">
+                                Empresa / fabricante
+                            </label>
+
+                            <input asp-for="EmpresaRastreador"
+                                   class="form-control registration-input"
+                                   placeholder="Ex.: Sascar" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="registration-footer">
+
+                    <a asp-controller="Motorista"
+                       asp-action="Endereco"
+                       class="btn registration-back-button">
+
+                        ← Voltar
+                    </a>
+
+                    <div class="d-flex align-items-center gap-4">
+
+                        <span class="required-info">
+                            * Campos obrigatórios
+                        </span>
+
+                        <button type="submit"
+                                class="btn btn-primary registration-next-button">
+
+                            Continuar →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        const rastreadorSim =
+            document.getElementById("rastreadorSim");
+
+        const rastreadorNao =
+            document.getElementById("rastreadorNao");
+
+        const rastreadorContainer =
+            document.getElementById("rastreadorContainer");
+
+
+        function atualizarRastreador() {
+
+            if (rastreadorNao.checked) {
+                rastreadorContainer.style.display = "none";
+            } else {
+                rastreadorContainer.style.display = "block";
+            }
+
+        }
+
+
+        rastreadorSim.addEventListener(
+            "change",
+            atualizarRastreador
+        );
+
+        rastreadorNao.addEventListener(
+            "change",
+            atualizarRastreador
+        );
+
+        atualizarRastreador();
+
+    </script>
+
+}

@@ -1,0 +1,2288 @@
+:root {
+    --primary: #185adb;
+    --primary-dark: #0e3f9e;
+    --primary-light: #eef4ff;
+
+    --text-dark: #172033;
+    --text-muted: #657083;
+
+    --background: #ffffff;
+    --background-soft: #f7f9fc;
+
+    --border: #e4e8ef;
+
+    --radius: 16px;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--text-dark);
+    background: var(--background);
+}
+
+
+/* ===============================
+   HEADER
+   =============================== */
+
+.public-header {
+    height: 76px;
+    display: flex;
+    align-items: center;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--text-dark);
+
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 0.8rem;
+}
+
+.nav-link-custom {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+
+    transition: 0.2s;
+}
+
+.nav-link-custom:hover {
+    color: var(--primary);
+}
+
+
+/* ===============================
+   HERO
+   =============================== */
+
+.hero-section {
+    padding: 60px 0 80px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f4f7fc 100%
+        );
+}
+
+.min-vh-75 {
+    min-height: 70vh;
+}
+
+.hero-content {
+    max-width: 610px;
+}
+
+.hero-badge {
+    display: inline-block;
+
+    margin-bottom: 20px;
+    padding: 7px 14px;
+
+    border-radius: 999px;
+
+    background: var(--primary-light);
+    color: var(--primary);
+
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.hero-content h1 {
+    margin-bottom: 22px;
+
+    font-size: clamp(2.6rem, 5vw, 4.3rem);
+    font-weight: 750;
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+}
+
+.hero-content h1 span {
+    color: var(--primary);
+}
+
+.hero-description {
+    max-width: 540px;
+
+    margin-bottom: 30px;
+
+    color: var(--text-muted);
+
+    font-size: 1.12rem;
+    line-height: 1.7;
+}
+
+.hero-primary-button,
+.hero-secondary-button {
+    padding: 13px 24px;
+
+    border-radius: 10px;
+
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.hero-image-container {
+    min-height: 460px;
+
+    position: relative;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(12, 38, 78, 0.15),
+            rgba(12, 38, 78, 0.45)
+        ),
+        url("/images/truck.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    box-shadow:
+        0 24px 60px rgba(24, 63, 120, 0.18);
+}
+
+.hero-image-overlay {
+    position: absolute;
+
+    left: 24px;
+    bottom: 24px;
+
+    padding: 14px 18px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    font-weight: 600;
+}
+
+
+/* ===============================
+   BENEFÍCIOS
+   =============================== */
+
+.benefits-section {
+    padding: 90px 0;
+
+    background: white;
+}
+
+.section-heading {
+    max-width: 700px;
+
+    margin: 0 auto;
+}
+
+.section-heading > span {
+    color: var(--primary);
+
+    font-weight: 700;
+    font-size: 0.9rem;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.section-heading h2 {
+    margin-top: 10px;
+
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+
+.section-heading p {
+    margin-top: 12px;
+
+    color: var(--text-muted);
+}
+
+.benefit-card {
+    height: 100%;
+
+    padding: 28px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    background: #ffffff;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 16px 35px rgba(36, 55, 90, 0.08);
+}
+
+.benefit-icon {
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--primary-light);
+    color: var(--primary);
+
+    font-weight: 700;
+}
+
+.benefit-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.benefit-card p {
+    margin-bottom: 0;
+
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+
+/* ===============================
+   PASSOS
+   =============================== */
+
+.steps-section {
+    padding: 90px 0;
+
+    background: var(--background-soft);
+}
+
+.step-item {
+    text-align: center;
+}
+
+.step-item > span {
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.step-item h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.step-item p {
+    max-width: 250px;
+
+    margin: 0 auto;
+
+    color: var(--text-muted);
+
+    line-height: 1.5;
+}
+
+
+/* ===============================
+   FOOTER
+   =============================== */
+
+.public-footer {
+    padding: 26px 0;
+
+    border-top: 1px solid var(--border);
+
+    background: white;
+
+    color: var(--text-muted);
+
+    text-align: center;
+
+    font-size: 0.9rem;
+}
+
+
+/* ===============================
+   RESPONSIVO
+   =============================== */
+
+@media (max-width: 991px) {
+
+    .hero-section {
+        padding-top: 50px;
+    }
+
+    .hero-image-container {
+        min-height: 360px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .public-header {
+        height: auto;
+
+        padding: 14px 0;
+    }
+
+    .nav-link-custom {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-image-container {
+        min-height: 280px;
+    }
+
+}
+
+/* ===============================
+   AUTENTICAÇÃO - LOGIN / REGISTER
+   =============================== */
+
+.auth-page {
+    min-height: calc(100vh - 76px);
+
+    display: flex;
+    align-items: center;
+
+    padding: 55px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef4fb 0%,
+            #f8fbff 100%
+        );
+}
+
+.auth-wrapper {
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 24px 70px rgba(31, 54, 91, 0.12);
+}
+
+
+/* FORM */
+
+.auth-form-container {
+    min-height: 680px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 55px 65px;
+
+    background: #ffffff;
+}
+
+.auth-heading {
+    margin-bottom: 34px;
+}
+
+.auth-eyebrow {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    color: var(--primary);
+
+    font-size: 0.85rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.auth-heading h1 {
+    margin-bottom: 12px;
+
+    font-size: 2.5rem;
+    font-weight: 750;
+
+    letter-spacing: -0.035em;
+}
+
+.auth-heading p {
+    max-width: 450px;
+
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.auth-label {
+    margin-bottom: 8px;
+
+    color: var(--text-dark);
+
+    font-weight: 600;
+}
+
+.auth-label span {
+    color: #dc3545;
+}
+
+.auth-input {
+    min-height: 52px;
+
+    padding: 12px 15px;
+
+    border: 1px solid #ccd5e2;
+    border-radius: 10px;
+
+    font-size: 1rem;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.auth-input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(24, 90, 219, 0.1);
+}
+
+.validation-message {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 0.85rem;
+}
+
+.auth-submit-button {
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 6px;
+
+    border-radius: 10px;
+
+    font-weight: 650;
+    font-size: 1rem;
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+
+    margin: 28px 0 20px;
+
+    color: var(--text-muted);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--border);
+}
+
+.auth-divider span {
+    padding: 0 14px;
+}
+
+.auth-footer-text {
+    text-align: center;
+}
+
+.auth-footer-text p {
+    margin-bottom: 3px;
+
+    color: var(--text-muted);
+}
+
+.auth-footer-text a {
+    color: var(--primary);
+
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.auth-footer-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* LADO VISUAL */
+
+.auth-visual {
+    min-height: 680px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding: 60px;
+
+    color: #ffffff;
+
+    background-image:
+        linear-gradient(
+            rgba(4, 28, 57, 0.55),
+            rgba(4, 28, 57, 0.78)
+        ),
+        url("/images/truck.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.auth-visual-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 440px;
+}
+
+.auth-visual-eyebrow {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #d9ebff;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.auth-visual-content h2 {
+    margin-bottom: 18px;
+
+    font-size: 3rem;
+    font-weight: 750;
+
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+}
+
+.auth-visual-content h2 span {
+    color: #37a0ff;
+}
+
+.auth-visual-description {
+    margin-bottom: 38px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 1.06rem;
+    line-height: 1.6;
+}
+
+.auth-benefits {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+.auth-benefit {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.auth-benefit-number {
+    min-width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    color: #58adff;
+
+    font-weight: 700;
+}
+
+.auth-benefit strong,
+.auth-benefit span {
+    display: block;
+}
+
+.auth-benefit strong {
+    margin-bottom: 3px;
+
+    font-size: 0.98rem;
+}
+
+.auth-benefit span {
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 0.9rem;
+}
+
+
+/* ERROS */
+
+.validation-summary-valid {
+    display: none;
+}
+
+.alert-danger:empty {
+    display: none;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 991px) {
+
+    .auth-page {
+        padding: 35px 0;
+    }
+
+    .auth-wrapper {
+        max-width: 680px;
+    }
+
+    .auth-form-container {
+        min-height: auto;
+
+        padding: 45px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .auth-form-container {
+        padding: 35px 24px;
+    }
+
+    .auth-heading h1 {
+        font-size: 2.1rem;
+    }
+
+}
+
+/* ===============================
+   ÁREA DO MOTORISTA
+   =============================== */
+
+.driver-body {
+    background: #f4f7fb;
+}
+
+.driver-header {
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.driver-logout-button {
+    border: none;
+
+    background: transparent;
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* ===============================
+   CADASTRO EM ETAPAS
+   =============================== */
+
+.registration-page {
+    padding: 45px 0 70px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f1f6fc 0%,
+            #f8fbff 100%
+        );
+
+    min-height: calc(100vh - 76px);
+}
+
+.registration-card {
+    max-width: 1080px;
+
+    margin: 0 auto;
+
+    padding: 45px 52px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 16px 45px rgba(35, 55, 90, 0.07);
+}
+
+.registration-heading {
+    margin-bottom: 30px;
+}
+
+.registration-line {
+    display: block;
+
+    width: 56px;
+    height: 3px;
+
+    margin-bottom: 18px;
+
+    border-radius: 999px;
+
+    background: var(--primary);
+}
+
+.registration-heading h1 {
+    margin-bottom: 6px;
+
+    font-size: 2.4rem;
+    font-weight: 750;
+
+    letter-spacing: -0.035em;
+}
+
+.registration-heading p {
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 1.05rem;
+}
+
+
+/* PROGRESSO */
+
+.registration-progress {
+    display: flex;
+    align-items: flex-start;
+
+    margin: 36px 0 44px;
+}
+
+.progress-step {
+    width: 120px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    color: #8994a6;
+
+    font-size: 0.87rem;
+}
+
+.step-circle {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #ccd5e2;
+    border-radius: 50%;
+
+    background: #f7f9fc;
+
+    color: #69758a;
+
+    font-weight: 700;
+}
+
+.progress-step.active {
+    color: var(--primary);
+
+    font-weight: 650;
+}
+
+.progress-step.active .step-circle {
+    border-color: var(--primary);
+
+    background: var(--primary);
+
+    color: white;
+}
+
+.progress-line {
+    flex: 1;
+
+    height: 2px;
+
+    margin-top: 20px;
+
+    background: #dde4ed;
+}
+
+
+/* FORM */
+
+.registration-form {
+    margin-top: 10px;
+}
+
+.registration-label {
+    margin-bottom: 8px;
+
+    color: var(--text-dark);
+
+    font-weight: 600;
+}
+
+.registration-label span {
+    color: #dc3545;
+}
+
+.registration-input {
+    min-height: 50px;
+
+    padding: 11px 14px;
+
+    border: 1px solid #ccd5e2;
+    border-radius: 9px;
+}
+
+.registration-input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(24, 90, 219, 0.1);
+}
+
+
+/* RODAPÉ DO FORM */
+
+.registration-footer {
+    margin-top: 25px;
+    padding-top: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 1px solid var(--border);
+}
+
+.required-info {
+    color: var(--text-muted);
+
+    font-size: 0.88rem;
+}
+
+.registration-next-button {
+    min-width: 150px;
+
+    padding: 11px 20px;
+
+    border-radius: 9px;
+
+    font-weight: 600;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+
+    .registration-card {
+        padding: 30px 22px;
+    }
+
+    .registration-heading h1 {
+        font-size: 2rem;
+    }
+
+    .registration-progress {
+        overflow-x: auto;
+
+        padding-bottom: 10px;
+    }
+
+    .progress-line {
+        min-width: 35px;
+    }
+
+    .progress-step {
+        min-width: 95px;
+    }
+
+}
+
+/* ETAPAS CONCLUÍDAS */
+
+.progress-step.completed {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.progress-step.completed .step-circle {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.progress-line.completed-line {
+    background: var(--primary);
+}
+
+
+/* BOTÃO VOLTAR */
+
+.registration-back-button {
+    padding: 11px 18px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: var(--text-dark);
+
+    font-weight: 600;
+}
+
+.registration-back-button:hover {
+    border-color: var(--primary);
+
+    background: var(--primary-light);
+
+    color: var(--primary);
+}
+
+/* ===============================
+   REVISÃO DO CADASTRO
+   =============================== */
+
+.review-card {
+    margin-bottom: 24px;
+
+    padding: 28px 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background: #ffffff;
+}
+
+.review-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.review-card-eyebrow {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--primary);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.review-card-header h2 {
+    margin: 0;
+
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.review-edit-link {
+    padding: 8px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    color: var(--primary);
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.review-edit-link:hover {
+    border-color: var(--primary);
+
+    background: var(--primary-light);
+
+    color: var(--primary);
+}
+
+
+/* GRID */
+
+.review-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px 35px;
+}
+
+.review-item {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.review-item-wide {
+    grid-column: span 2;
+}
+
+.review-item span {
+    color: var(--text-muted);
+
+    font-size: 0.84rem;
+}
+
+.review-item strong {
+    color: var(--text-dark);
+
+    font-size: 0.97rem;
+    font-weight: 650;
+}
+
+
+/* ENVIO */
+
+.review-submit-area {
+    margin-top: 34px;
+    padding-top: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    border-top: 1px solid var(--border);
+}
+
+.review-submit-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.review-submit-info strong {
+    font-size: 1rem;
+}
+
+.review-submit-info span {
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+}
+
+.review-submit-button {
+    min-width: 180px;
+
+    padding: 12px 24px;
+
+    border-radius: 9px;
+
+    font-weight: 650;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .review-item-wide {
+        grid-column: auto;
+    }
+
+    .review-submit-area {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .review-submit-button {
+        width: 100%;
+    }
+
+}
+
+/* ===============================
+   PAINEL DO MOTORISTA
+   =============================== */
+
+.driver-panel-page {
+    min-height: calc(100vh - 76px);
+
+    padding: 55px 0 80px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f1f6fc 0%,
+            #f8fbff 100%
+        );
+}
+
+.driver-panel-heading {
+    margin-bottom: 30px;
+}
+
+.driver-panel-eyebrow {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--primary);
+
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.driver-panel-heading h1 {
+    margin-bottom: 8px;
+
+    font-size: 2.3rem;
+    font-weight: 750;
+
+    letter-spacing: -0.035em;
+}
+
+.driver-panel-heading p {
+    margin: 0;
+
+    color: var(--text-muted);
+}
+
+
+/* STATUS */
+
+.driver-status-card {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    padding: 30px;
+
+    border-radius: 16px;
+
+    margin-bottom: 26px;
+}
+
+.driver-status-card.pending {
+    border: 1px solid #f2d692;
+
+    background: #fffaf0;
+}
+
+.driver-status-icon {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff1c7;
+    color: #a66b00;
+
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.driver-status-content {
+    flex: 1;
+}
+
+.driver-status-label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #9a721e;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+.driver-status-content h2 {
+    margin-bottom: 5px;
+
+    color: #5f480f;
+
+    font-size: 1.35rem;
+    font-weight: 750;
+}
+
+.driver-status-content p {
+    margin: 0;
+
+    color: #756438;
+}
+
+
+/* CARDS */
+
+.driver-info-card {
+    height: 100%;
+
+    padding: 28px 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background: white;
+
+    box-shadow:
+        0 10px 30px rgba(35, 55, 90, 0.05);
+}
+
+.driver-info-header {
+    margin-bottom: 24px;
+    padding-bottom: 17px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.driver-info-header span {
+    display: block;
+
+    color: var(--primary);
+
+    font-size: 0.76rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+.driver-info-header h3 {
+    margin: 3px 0 0;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.driver-info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px 30px;
+}
+
+.driver-info-grid.compact {
+    margin-top: 25px;
+}
+
+.driver-info-item {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.driver-info-item span {
+    color: var(--text-muted);
+
+    font-size: 0.83rem;
+}
+
+.driver-info-item strong {
+    font-size: 0.96rem;
+}
+
+.driver-vehicle-main {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.driver-vehicle-main strong {
+    font-size: 1.15rem;
+}
+
+.driver-vehicle-main span {
+    color: var(--text-muted);
+}
+
+
+/* SOLICITAÇÃO */
+
+.driver-request-card {
+    margin-top: 24px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 22px 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background: white;
+}
+
+.driver-request-item {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.driver-request-item span {
+    color: var(--text-muted);
+
+    font-size: 0.82rem;
+}
+
+.driver-request-item strong {
+    font-size: 0.94rem;
+}
+
+.driver-request-divider {
+    width: 1px;
+    height: 42px;
+
+    margin: 0 30px;
+
+    background: var(--border);
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+
+    .driver-status-card {
+        align-items: flex-start;
+    }
+
+    .driver-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .driver-request-card {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 20px;
+    }
+
+    .driver-request-divider {
+        width: 100%;
+        height: 1px;
+
+        margin: 0;
+    }
+
+}
+
+/* ===============================
+   ÁREA ADMINISTRATIVA
+   =============================== */
+
+.admin-body {
+    background: #f4f7fb;
+}
+
+.admin-header {
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+
+    background: white;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+}
+
+.admin-company-label {
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.admin-logout-button {
+    border: none;
+
+    background: transparent;
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* PÁGINA */
+
+.admin-page {
+    min-height: calc(100vh - 76px);
+
+    padding: 50px 0 80px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f1f6fc 0%,
+            #f8fbff 100%
+        );
+}
+
+.admin-page-heading {
+    margin-bottom: 30px;
+}
+
+.admin-eyebrow {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--primary);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.admin-page-heading h1 {
+    margin-bottom: 7px;
+
+    font-size: 2.4rem;
+    font-weight: 750;
+
+    letter-spacing: -0.035em;
+}
+
+.admin-page-heading p {
+    margin: 0;
+
+    color: var(--text-muted);
+}
+
+
+/* RESUMO */
+
+.admin-summary {
+    margin-bottom: 28px;
+}
+
+.admin-summary-card {
+    min-height: 135px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 26px 28px;
+
+    border-radius: 15px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 10px 30px rgba(35, 55, 90, 0.05);
+}
+
+.admin-summary-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.admin-summary-info span {
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.admin-summary-info strong {
+    font-size: 2.1rem;
+    line-height: 1;
+}
+
+.admin-summary-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.admin-summary-card.pending .admin-summary-icon {
+    background: #fff4d7;
+    color: #9c6b00;
+}
+
+.admin-summary-card.approved .admin-summary-icon {
+    background: #e7f7ed;
+    color: #238347;
+}
+
+.admin-summary-card.rejected .admin-summary-icon {
+    background: #fdebec;
+    color: #c13b46;
+}
+
+
+/* TABELA */
+
+.admin-table-card {
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background: white;
+
+    box-shadow:
+        0 10px 30px rgba(35, 55, 90, 0.05);
+}
+
+.admin-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 25px 28px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-table-eyebrow {
+    display: block;
+
+    color: var(--primary);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+.admin-table-header h2 {
+    margin: 3px 0 0;
+
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.admin-driver-count {
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    background: var(--background-soft);
+
+    color: var(--text-muted);
+
+    font-size: 0.85rem;
+}
+
+
+/* TABELA BOOTSTRAP */
+
+.admin-table {
+    margin: 0;
+}
+
+.admin-table thead th {
+    padding: 15px 22px;
+
+    border-bottom: 1px solid var(--border);
+
+    background: #f8fafc;
+
+    color: var(--text-muted);
+
+    font-size: 0.77rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    white-space: nowrap;
+}
+
+.admin-table tbody td {
+    padding: 18px 22px;
+
+    border-color: var(--border);
+
+    color: var(--text-dark);
+
+    font-size: 0.92rem;
+
+    vertical-align: middle;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+    background: #fafcff;
+}
+
+.admin-driver-name {
+    font-weight: 650;
+}
+
+.admin-plate {
+    font-weight: 650;
+    letter-spacing: 0.04em;
+}
+
+
+/* STATUS */
+
+.status-badge {
+    display: inline-block;
+
+    padding: 6px 11px;
+
+    border-radius: 999px;
+
+    font-size: 0.76rem;
+    font-weight: 650;
+
+    white-space: nowrap;
+}
+
+.status-pending {
+    background: #fff4d7;
+    color: #8f6505;
+}
+
+.status-approved {
+    background: #e7f7ed;
+    color: #247d46;
+}
+
+.status-rejected {
+    background: #fdebec;
+    color: #b53842;
+}
+
+.status-correction {
+    background: #e9f1ff;
+    color: #285fb8;
+}
+
+
+/* BOTÃO DETALHES */
+
+.admin-details-button {
+    padding: 8px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: white;
+
+    color: var(--primary);
+
+    font-size: 0.84rem;
+    font-weight: 600;
+}
+
+.admin-details-button:hover {
+    border-color: var(--primary);
+
+    background: var(--primary-light);
+
+    color: var(--primary);
+}
+
+
+/* LISTA VAZIA */
+
+.admin-empty-state {
+    padding: 55px 25px;
+
+    text-align: center;
+}
+
+.admin-empty-state strong {
+    display: block;
+
+    margin-bottom: 6px;
+}
+
+.admin-empty-state p {
+    margin: 0;
+
+    color: var(--text-muted);
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+
+    .admin-company-label {
+        display: none;
+    }
+
+    .admin-table-header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+}
+
+
+/* ===============================
+   DETALHES DO MOTORISTA - ADMIN
+   =============================== */
+
+.admin-back-link {
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.admin-back-link:hover {
+    color: var(--primary);
+}
+
+
+.admin-detail-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 28px;
+}
+
+.admin-detail-heading h1 {
+    margin-bottom: 7px;
+
+    font-size: 2.4rem;
+    font-weight: 750;
+
+    letter-spacing: -0.035em;
+}
+
+.admin-detail-heading p {
+    margin: 0;
+
+    color: var(--text-muted);
+}
+
+.detail-status {
+    padding: 8px 14px;
+
+    font-size: 0.82rem;
+}
+
+
+/* CARDS */
+
+.admin-detail-card {
+    margin-bottom: 22px;
+
+    padding: 28px 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background: white;
+
+    box-shadow:
+        0 10px 30px rgba(35, 55, 90, 0.05);
+}
+
+.admin-detail-card-header {
+    margin-bottom: 24px;
+    padding-bottom: 17px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-detail-card-header span {
+    display: block;
+
+    color: var(--primary);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+.admin-detail-card-header h2 {
+    margin: 3px 0 0;
+
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+
+/* GRID */
+
+.admin-detail-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 23px 36px;
+}
+
+.admin-detail-item {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.admin-detail-wide {
+    grid-column: span 2;
+}
+
+.admin-detail-item span {
+    color: var(--text-muted);
+
+    font-size: 0.83rem;
+}
+
+.admin-detail-item strong {
+    color: var(--text-dark);
+
+    font-size: 0.97rem;
+    font-weight: 650;
+}
+
+
+/* ANÁLISE */
+
+.admin-analysis-card {
+    margin-top: 30px;
+
+    padding: 30px;
+
+    border: 1px solid #d8e0eb;
+    border-radius: 15px;
+
+    background: white;
+
+    box-shadow:
+        0 10px 30px rgba(35, 55, 90, 0.05);
+}
+
+.admin-analysis-heading {
+    margin-bottom: 24px;
+}
+
+.admin-analysis-heading > span {
+    display: block;
+
+    color: var(--primary);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.admin-analysis-heading h2 {
+    margin: 4px 0 7px;
+
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.admin-analysis-heading p {
+    margin: 0;
+
+    color: var(--text-muted);
+}
+
+.admin-observation {
+    min-height: 115px;
+
+    resize: vertical;
+
+    border: 1px solid #ccd5e2;
+    border-radius: 9px;
+}
+
+.admin-observation:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(24, 90, 219, 0.1);
+}
+
+
+/* BOTÕES */
+
+.admin-action-buttons {
+    display: flex;
+
+    gap: 12px;
+}
+
+.admin-reject-button {
+    padding: 10px 19px;
+
+    border: 1px solid #dc3545;
+
+    background: white;
+    color: #c83240;
+
+    font-weight: 600;
+}
+
+.admin-reject-button:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.admin-correction-button {
+    padding: 10px 19px;
+
+    border: 1px solid var(--primary);
+
+    background: white;
+    color: var(--primary);
+
+    font-weight: 600;
+}
+
+.admin-correction-button:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.admin-approve-form {
+    margin-top: 20px;
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border);
+
+    text-align: right;
+}
+
+.admin-approve-button {
+    padding: 11px 22px;
+
+    font-weight: 650;
+}
+
+
+/* OBSERVAÇÃO JÁ ENVIADA */
+
+.admin-existing-observation {
+    padding: 18px 20px;
+
+    border-radius: 10px;
+
+    background: var(--background-soft);
+}
+
+.admin-existing-observation span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--text-muted);
+
+    font-size: 0.8rem;
+}
+
+.admin-existing-observation p {
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+
+    .admin-detail-heading {
+        flex-direction: column;
+    }
+
+    .admin-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-detail-wide {
+        grid-column: auto;
+    }
+
+    .admin-action-buttons {
+        flex-direction: column;
+    }
+
+    .admin-action-buttons .btn,
+    .admin-approve-button {
+        width: 100%;
+    }
+
+}
+
+
+/* ===============================
+   STATUS DO MOTORISTA
+   =============================== */
+
+.driver-status-card.correction {
+    border: 1px solid #b8cff5;
+
+    background: #f2f7ff;
+}
+
+.driver-status-card.correction .driver-status-icon {
+    background: #dceaff;
+    color: #245fbd;
+}
+
+.driver-status-card.correction .driver-status-label {
+    color: #356ab8;
+}
+
+.driver-status-card.correction h2 {
+    color: #234c86;
+}
+
+
+.driver-status-card.approved {
+    border: 1px solid #b9dfc6;
+
+    background: #f0faf3;
+}
+
+.driver-status-card.approved .driver-status-icon {
+    background: #d9f2e1;
+    color: #237c45;
+}
+
+.driver-status-card.approved .driver-status-label {
+    color: #398258;
+}
+
+.driver-status-card.approved h2 {
+    color: #225d38;
+}
+
+
+.driver-status-card.rejected {
+    border: 1px solid #efc3c7;
+
+    background: #fff5f5;
+}
+
+.driver-status-card.rejected .driver-status-icon {
+    background: #fbe0e2;
+    color: #ba3540;
+}
+
+.driver-status-card.rejected .driver-status-label {
+    color: #b74750;
+}
+
+.driver-status-card.rejected h2 {
+    color: #8c2e36;
+}
+
+
+/* OBSERVAÇÃO DO ADMIN */
+
+.driver-status-observation {
+    margin-top: 18px;
+
+    padding: 14px 16px;
+
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.65);
+}
+
+.driver-status-observation span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--text-muted);
+
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.driver-status-observation strong {
+    color: var(--text-dark);
+
+    font-size: 0.93rem;
+    font-weight: 600;
+
+    line-height: 1.5;
+}

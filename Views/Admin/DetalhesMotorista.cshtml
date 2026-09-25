@@ -1,0 +1,565 @@
+@model TransVias.ViewModels.DetalhesMotoristaViewModel
+
+@using TransVias.Models.Enums
+
+@{
+    ViewData["Title"] = "Detalhes do motorista";
+    Layout = "_AdminLayout";
+}
+
+<section class="admin-page">
+
+    <div class="container">
+
+        <!-- VOLTAR -->
+        <div class="mb-4">
+
+            <a asp-controller="Admin"
+               asp-action="Dashboard"
+               class="admin-back-link">
+
+                ← Voltar para o dashboard
+
+            </a>
+
+        </div>
+
+
+        <!-- CABEÇALHO -->
+        <div class="admin-detail-heading">
+
+            <div>
+
+                <span class="admin-eyebrow">
+                    Análise de cadastro
+                </span>
+
+                <h1>
+                    @Model.Motorista.NomeCompleto
+                </h1>
+
+                <p>
+                    Confira os dados enviados pelo motorista
+                    antes de tomar uma decisão.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                @switch (Model.Motorista.Status)
+                {
+                    case StatusCadastro.Pendente:
+
+                        <span class="status-badge status-pending detail-status">
+                            Pendente
+                        </span>
+
+                        break;
+
+                    case StatusCadastro.Aprovado:
+
+                        <span class="status-badge status-approved detail-status">
+                            Aprovado
+                        </span>
+
+                        break;
+
+                    case StatusCadastro.Recusado:
+
+                        <span class="status-badge status-rejected detail-status">
+                            Recusado
+                        </span>
+
+                        break;
+
+                    case StatusCadastro.CorrecaoSolicitada:
+
+                        <span class="status-badge status-correction detail-status">
+                            Correção solicitada
+                        </span>
+
+                        break;
+                }
+
+            </div>
+
+        </div>
+
+
+        @if (TempData["Erro"] is not null)
+        {
+            <div class="alert alert-danger mb-4">
+                @TempData["Erro"]
+            </div>
+        }
+
+
+        <!-- DADOS PESSOAIS -->
+        <div class="admin-detail-card">
+
+            <div class="admin-detail-card-header">
+
+                <div>
+                    <span>Motorista</span>
+                    <h2>Dados pessoais</h2>
+                </div>
+
+            </div>
+
+
+            <div class="admin-detail-grid">
+
+                <div class="admin-detail-item admin-detail-wide">
+                    <span>Nome completo</span>
+
+                    <strong>
+                        @Model.Motorista.NomeCompleto
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>CPF</span>
+
+                    <strong>
+                        @Model.Motorista.Cpf
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Data de nascimento</span>
+
+                    <strong>
+                        @Model.Motorista.DataNascimento.ToString("dd/MM/yyyy")
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Telefone principal</span>
+
+                    <strong>
+                        @Model.Motorista.TelefonePrincipal
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Telefone secundário</span>
+
+                    <strong>
+                        @Model.Motorista.TelefoneSecundario
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Número da CNH</span>
+
+                    <strong>
+                        @Model.Motorista.NumeroCnh
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Categoria da CNH</span>
+
+                    <strong>
+                        @Model.Motorista.CategoriaCnh
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Certificação especial</span>
+
+                    <strong>
+                        @(Model.Motorista.PossuiCertificacaoEspecial
+                            ? "Sim"
+                            : "Não")
+                    </strong>
+                </div>
+
+
+                @if (Model.Motorista.PossuiCertificacaoEspecial)
+                {
+                    <div class="admin-detail-item">
+
+                        <span>Tipo da certificação</span>
+
+                        <strong>
+                            @Model.Motorista.TipoCertificacao
+                        </strong>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+
+        <!-- ENDEREÇO -->
+        <div class="admin-detail-card">
+
+            <div class="admin-detail-card-header">
+
+                <div>
+                    <span>Localização</span>
+                    <h2>Endereço</h2>
+                </div>
+
+            </div>
+
+
+            <div class="admin-detail-grid">
+
+                <div class="admin-detail-item">
+                    <span>CEP</span>
+
+                    <strong>
+                        @Model.Motorista.Endereco.Cep
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item admin-detail-wide">
+                    <span>Rua / Avenida</span>
+
+                    <strong>
+                        @Model.Motorista.Endereco.RuaAvenida
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Número</span>
+
+                    <strong>
+                        @Model.Motorista.Endereco.Numero
+                    </strong>
+                </div>
+
+
+                @if (!string.IsNullOrWhiteSpace(
+                    Model.Motorista.Endereco.Complemento))
+                {
+                    <div class="admin-detail-item">
+
+                        <span>Complemento</span>
+
+                        <strong>
+                            @Model.Motorista.Endereco.Complemento
+                        </strong>
+
+                    </div>
+                }
+
+
+                <div class="admin-detail-item">
+                    <span>Bairro</span>
+
+                    <strong>
+                        @Model.Motorista.Endereco.Bairro
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Cidade</span>
+
+                    <strong>
+                        @Model.Motorista.Endereco.Cidade
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Estado</span>
+
+                    <strong>
+                        @Model.Motorista.Endereco.Estado
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- VEÍCULO -->
+        <div class="admin-detail-card">
+
+            <div class="admin-detail-card-header">
+
+                <div>
+                    <span>Transporte</span>
+                    <h2>Veículo</h2>
+                </div>
+
+            </div>
+
+
+            <div class="admin-detail-grid">
+
+                <div class="admin-detail-item">
+                    <span>Placa</span>
+
+                    <strong>
+                        @Model.Motorista.Veiculo.Placa
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Ano</span>
+
+                    <strong>
+                        @Model.Motorista.Veiculo.Ano
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Marca</span>
+
+                    <strong>
+                        @Model.Motorista.Veiculo.Marca
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Modelo</span>
+
+                    <strong>
+                        @Model.Motorista.Veiculo.Modelo
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Tipo de veículo</span>
+
+                    <strong>
+                        @Model.Motorista.Veiculo.TipoVeiculo
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Possui rastreador</span>
+
+                    <strong>
+                        @(Model.Motorista.Veiculo.PossuiRastreador
+                            ? "Sim"
+                            : "Não")
+                    </strong>
+                </div>
+
+
+                @if (Model.Motorista.Veiculo.PossuiRastreador)
+                {
+                    <div class="admin-detail-item">
+
+                        <span>Tipo do rastreador</span>
+
+                        <strong>
+                            @Model.Motorista.Veiculo.TipoRastreador
+                        </strong>
+
+                    </div>
+
+
+                    <div class="admin-detail-item">
+
+                        <span>Empresa / fabricante</span>
+
+                        <strong>
+                            @Model.Motorista.Veiculo.EmpresaRastreador
+                        </strong>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMAÇÕES DA SOLICITAÇÃO -->
+        <div class="admin-detail-card">
+
+            <div class="admin-detail-card-header">
+
+                <div>
+                    <span>Solicitação</span>
+                    <h2>Informações do cadastro</h2>
+                </div>
+
+            </div>
+
+
+            <div class="admin-detail-grid">
+
+                <div class="admin-detail-item">
+                    <span>Enviado em</span>
+
+                    <strong>
+                        @(Model.Motorista.DataEnvio.ToString("dd/MM/yyyy 'às' HH:mm"))
+                    </strong>
+                </div>
+
+
+                <div class="admin-detail-item">
+                    <span>Última atualização</span>
+
+                    <strong>
+                        @(Model.Motorista.DataAtualizacao.ToString("dd/MM/yyyy 'às' HH:mm"))
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        @if (Model.Motorista.Status == StatusCadastro.Pendente)
+        {
+            <!-- ÁREA DE ANÁLISE -->
+            <div class="admin-analysis-card">
+
+                <div class="admin-analysis-heading">
+
+                    <span>Decisão</span>
+
+                    <h2>Analisar cadastro</h2>
+
+                    <p>
+                        Para recusar ou solicitar uma correção,
+                        informe uma observação para o motorista.
+                    </p>
+
+                </div>
+
+
+                <!--
+                    O mesmo campo "observacao" será usado tanto
+                    para Recusar quanto para SolicitarCorrecao.
+                -->
+                <form method="post"
+                      asp-controller="Admin"
+                      asp-action="Recusar">
+
+                    <input type="hidden"
+                           name="id"
+                           value="@Model.Motorista.Id" />
+
+
+                    <div class="mb-4">
+
+                        <label for="observacao"
+                               class="form-label registration-label">
+
+                            Observação
+
+                        </label>
+
+                        <textarea id="observacao"
+                                  name="observacao"
+                                  class="form-control admin-observation"
+                                  rows="4"
+                                  placeholder="Informe o motivo da recusa ou o que precisa ser corrigido...">@Model.Observacao</textarea>
+
+                    </div>
+
+
+                    <div class="admin-action-buttons">
+
+                        <button type="submit"
+                                class="btn admin-reject-button">
+
+                            Recusar
+
+                        </button>
+
+
+                        <button type="submit"
+                                formaction="@Url.Action(
+                                    "SolicitarCorrecao",
+                                    "Admin")"
+                                class="btn admin-correction-button">
+
+                            Solicitar correção
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <!-- APROVAÇÃO NÃO PRECISA DE OBSERVAÇÃO -->
+                <form asp-controller="Admin"
+                      asp-action="Aprovar"
+                      method="post"
+                      class="admin-approve-form">
+
+                    <input type="hidden"
+                           name="id"
+                           value="@Model.Motorista.Id" />
+
+                    <button type="submit"
+                            class="btn btn-success admin-approve-button">
+
+                        Aprovar cadastro
+
+                    </button>
+
+                </form>
+
+            </div>
+        }
+        else
+        {
+            <!-- CADASTRO JÁ ANALISADO -->
+            <div class="admin-analysis-card">
+
+                <div class="admin-analysis-heading">
+
+                    <span>Análise</span>
+
+                    <h2>Cadastro já analisado</h2>
+
+                    <p>
+                        Este cadastro não está mais pendente
+                        de uma decisão administrativa.
+                    </p>
+
+                </div>
+
+
+                @if (!string.IsNullOrWhiteSpace(
+                    Model.Motorista.ObservacaoAnalise))
+                {
+                    <div class="admin-existing-observation">
+
+                        <span>Observação enviada ao motorista</span>
+
+                        <p>
+                            @Model.Motorista.ObservacaoAnalise
+                        </p>
+
+                    </div>
+                }
+
+            </div>
+        }
+
+    </div>
+
+</section>

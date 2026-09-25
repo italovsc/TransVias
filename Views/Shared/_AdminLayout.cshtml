@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - TransVias</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+</head>
+
+<body class="admin-body">
+
+    <header class="admin-header">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <a asp-controller="Admin"
+               asp-action="Dashboard"
+               class="brand text-decoration-none">
+
+                <div class="brand-icon">
+                    TV
+                </div>
+
+                <span>TransVias</span>
+            </a>
+
+            <div class="admin-header-actions">
+
+                <span class="admin-company-label">
+                    Área administrativa
+                </span>
+
+                <form asp-controller="Account"
+                      asp-action="Logout"
+                      method="post">
+
+                    <button type="submit"
+                            class="admin-logout-button">
+                        Sair
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
